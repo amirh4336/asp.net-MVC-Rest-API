@@ -4,9 +4,11 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<ICommanderRepo, MockCommanderRepo>();
+// builder.Services.AddScoped<ICommanderRepo, MockCommanderRepo>();
 builder.Services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer
     (builder.Configuration.GetConnectionString("CommanderConnection")));
+builder.Services.AddScoped<ICommanderRepo, SqlCommanderRepo>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

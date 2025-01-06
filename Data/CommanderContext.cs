@@ -3,12 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _.Data;
 
-public class CommanderContext : DbContext
+public class CommanderContext(DbContextOptions<CommanderContext> options) : DbContext(options)
 {
-    public CommanderContext(DbContextOptions<CommanderContext> options) : base(options)
-    {
-        
-    }
-    
     public DbSet<Command> Commands { get; set; }
 }

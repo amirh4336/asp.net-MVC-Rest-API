@@ -2,15 +2,15 @@ using _.Models;
 
 namespace _.Data;
 
-public class SqlCommanderRepo : ICommanderRepo
+public class SqlCommanderRepo(CommanderContext context) : ICommanderRepo
 {
     public Command GetCommandById(int id)
     {
-        throw new NotImplementedException();
+        return context.Commands.FirstOrDefault(p => p.Id == id);
     }
 
     public IEnumerable<Command> GetAllCommands()
     {
-        throw new NotImplementedException();
+        return context.Commands.ToList();
     }
 }
