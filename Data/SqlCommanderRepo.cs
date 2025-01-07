@@ -6,7 +6,7 @@ public class SqlCommanderRepo(CommanderContext context) : ICommanderRepo
 {
     public bool SaveChanges()
     {
-        return (context.SaveChanges() >= 0 );
+        return (context.SaveChanges() >= 0);
     }
 
     public Command GetCommandById(int id)
@@ -24,5 +24,10 @@ public class SqlCommanderRepo(CommanderContext context) : ICommanderRepo
         ArgumentNullException.ThrowIfNull(cmd);
 
         context.Commands.Add(cmd);
+    }
+
+    public void UpdateCommand(Command cmd)
+    {
+        // Nothing 
     }
 }

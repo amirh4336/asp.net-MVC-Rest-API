@@ -21,7 +21,7 @@ namespace _.Controllers
         }
 
         //GET api/commands/{id}
-        [HttpGet("{id}", Name = "GetCommandById")]
+        [HttpGet("{id}")]
         public ActionResult<CommandReadDto> GetCommandById(int id)
         {
             var commandItem = repository.GetCommandById(id);
@@ -41,6 +41,19 @@ namespace _.Controllers
 
             return CreatedAtRoute(nameof(GetCommandById)
                 , new { Id = commandReadDto.Id }, commandReadDto);
+        }
+
+        // UPDATE api/commands/{id}
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand(int id, CommandUpdateDto commandUpdateDto)
+        {
+            var commandModelFromRepo = repository.GetCommandById(id);
+            if (commandModelFromRepo == null) return NotFound();
+            mapper.Map(commandUpdateDto, commandModelFromRepo);
+            repository.UpdateCommand(commandModelFromRepo);
+            repository.SaveChanges();
+
+            return NoContent();
         }
     }
 }

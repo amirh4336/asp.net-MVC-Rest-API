@@ -10,7 +10,7 @@ public class CommandsProfile : Profile
     {
         // Source --> target
         CreateMap<Command, CommandReadDto>();
-        // target --> source
         CreateMap<CommandCreateDto, Command>();
+        CreateMap<CommandUpdateDto, Command>();
     }
 }
