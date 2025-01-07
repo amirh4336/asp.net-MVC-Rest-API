@@ -8,6 +8,9 @@ public class CommandsProfile : Profile
 {
     public CommandsProfile()
     {
+        // Source --> target
         CreateMap<Command, CommandReadDto>();
+        // target --> source
+        CreateMap<CommandCreateDto, Command>();
     }
 }

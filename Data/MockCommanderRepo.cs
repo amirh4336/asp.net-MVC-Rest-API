@@ -16,6 +16,16 @@ namespace _.Data
             return commands;
         }
 
+        public void CreateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
         public Command GetCommandById(int id)
         {
             return new Command { Id = id, HowTo = "How to do846235", Platform = "inline", Line = "this is" };
