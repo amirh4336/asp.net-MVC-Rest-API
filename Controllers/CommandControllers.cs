@@ -2,6 +2,7 @@ using _.Data;
 using _.Dto;
 using _.Models;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _.Controllers
@@ -40,7 +41,7 @@ namespace _.Controllers
             var commandReadDto = mapper.Map<CommandReadDto>(commandModel);
 
             return CreatedAtRoute(nameof(GetCommandById)
-                , new { Id = commandReadDto.Id }, commandReadDto);
+                , new { commandReadDto.Id }, commandReadDto);
         }
 
         // UPDATE api/commands/{id}
@@ -55,5 +56,22 @@ namespace _.Controllers
 
             return NoContent();
         }
+        
+        // PATCH api/commands/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialUpdateCommand(int id , JsonPatchDocument<CommandUpdateDto> patchDocument)
+        {
+            var commandModelFromRepo = repository.GetCommandById(id);
+            if (commandModelFromRepo == null) return NotFound();
+            var commandToPatch = mapper.Map<CommandUpdateDto>(commandModelFromRepo);
+            patchDocument.ApplyTo(commandToPatch, ModelState);
+            if (!TryValidateModel(commandToPatch)) return ValidationProblem(ModelState);
+            mapper.Map(commandToPatch, commandModelFromRepo);
+            repository.UpdateCommand(commandModelFromRepo);
+            repository.SaveChanges();
+            
+            
+            return NoContent();
+        } 
     }
 }

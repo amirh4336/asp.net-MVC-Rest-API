@@ -173,3 +173,7 @@ C:\Users\smart\asp.net-MVC-Rest-API\obj\Debug\net8.0\..genruntimeconfig.cache
 C:\Users\smart\asp.net-MVC-Rest-API\obj\Debug\net8.0\ref\..dll
 C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\smart\asp.net-MVC-Rest-API\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
