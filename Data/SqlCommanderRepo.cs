@@ -30,4 +30,12 @@ public class SqlCommanderRepo(CommanderContext context) : ICommanderRepo
     {
         // Nothing 
     }
+
+    public void DeleteCommand(Command cmd)
+    {
+        ArgumentNullException.ThrowIfNull(cmd);
+
+        context.Commands.Remove(cmd);
+        
+    }
 }

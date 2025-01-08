@@ -26,6 +26,11 @@ namespace _.Data
             throw new NotImplementedException();
         }
 
+        public void DeleteCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SaveChanges()
         {
             throw new NotImplementedException();
